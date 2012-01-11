@@ -57,7 +57,7 @@
 
 	\section*{}
 
-	\begin{frame}[plain,allowframebreaks]{Literatur}
+	\begin{frame}[plain]{Literature}
 		\nocite{liteos08}
 		\bibliographystyle{alphadin}
 		\bibliography{./Literatur}
