@@ -44,6 +44,7 @@
 	%\setbeamercolor{frametitle}{fg=black,bg=tu-grey}
 
 	\input{./01-Design_goals.latex}
+	\input{./02-Components.latex}
 
 	\section*{}
 

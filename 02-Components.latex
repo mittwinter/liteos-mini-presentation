@@ -1,0 +1,120 @@
+\section{Components}
+
+%\subsection{Overview}
+
+\begin{frame}{Components: Overview}
+	\begin{columns}
+		\column{.75\textwidth}
+			%\begin{center}
+			\includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{./image/liteos-components}
+			%\end{center}
+		\column{.25\textwidth}
+			\begin{itemize}
+				\item	LiteShell
+				\item	LiteFS
+				\item	LiteOS kernel
+			\end{itemize}
+	\end{columns}
+\end{frame}
+
+%\subsection{LiteShell}
+
+\begin{frame}{LiteShell}
+	\begin{itemize}
+		\item	Runs on ``base station''
+				\begin{itemize}
+					\item	Shell state is \emph{only} on base station
+					\item	Commands translated to internal messages
+				\end{itemize}
+		\item	Provided commands for\dots
+				\begin{itemize}
+					\item \emph{dirs/files}: \texttt{ls}, \texttt{mkdir}, \texttt{cd}, \texttt{cp}, etc.
+					\item \emph{processes}: \texttt{ps}, \texttt{kill}, \texttt{exec}
+					\item \emph{debugging}: \texttt{breakpoint}, \texttt{continue}, \texttt{snapshot}, \texttt{restore}, etc.
+					\item \emph{environment} (history, etc.) and \emph{device commands} (\texttt{./<deviceName})
+				\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%\subsection{LiteFS}
+
+\begin{frame}{LiteFS}
+	\begin{itemize}
+		\item	Hierarchical filesystem with directories and files (applications, devices, data)
+		\item	Each node's filesystem ``mounted'' to a root directory on base station
+		\item	Access control: user levels $ 1 $ - $ 3 $ with permissions \texttt{rwx} each
+		\item	Internal representation:
+				\includegraphics[width=.7\textwidth,keepaspectratio=true]{./image/litefs}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{LiteFS API}
+	Common API for LiteFS exists:
+	\begin{itemize}
+		\item	\texttt{fopen()}, \texttt{fclose()}, \texttt{fread()}, \texttt{fwrite()},\dots
+		\item	\texttt{fcreatedir()}, \texttt{fcopy()}, \texttt{fmove()},\dots
+		\item	\texttt{fsearch()}, \texttt{finfonode()},\dots
+	\end{itemize}
+\end{frame}
+
+%\subsection{LiteOS kernel}
+
+\begin{frame}{LiteOS kernel}
+	\begin{itemize}
+		\item	Supports multithreading
+		\item	\emph{Priority-based} or \emph{round-robin} scheduling
+		\item	Dynamic (un)loading of applications
+		\item	Event handling
+				\begin{itemize}
+					\item	{internal events}: e.\,g. sending of packet succeeded $ \Rightarrow $ threads
+					\item	{external events}: e.\,g. packet received $ \Rightarrow $ callbacks
+				\end{itemize}
+		\item	Dynamic memory allocation (\texttt{malloc()}, \texttt{free()}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{LiteOS kernel: Dynamic (un)loading}
+	\begin{itemize}
+		\item	(Un)Loading of applications involves relocating memory access \\
+				(start address, allocated memory address, stack top)
+		\item	Two approaches:
+				\begin{enumerate}
+					\item	Application's source code available: \\
+							Recompile application with new memory locations
+					\item	Source not available: \\
+							\begin{itemize}
+								\item	Based on application's assembler derive a \emph{model}
+										describing how addresses change when relocated
+								\item	Upload application and model to node
+							\end{itemize}
+				\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{LiteOS: Event handling example\,\cite{liteos08}}
+	\begin{columns}
+		\column{.1\textwidth}
+			\quad \\
+		\column{.9\textwidth}
+			\begin{lstlisting}[language=C,basicstyle=\scriptsize,numbers=left]
+void application() {
+  bool wakeup = FALSE;
+  uint8_t currentThread;
+  currentThread = getCurrentThreadIndex();
+  registerRadioEvent( MYPORT, msg, length, packetReceived );
+  sleepThread( T_timeout );
+  unregisterRadioEvent( MYPORT );
+  if( wakeup == TRUE ) { /* ... */ }
+  else { /* ... */ }
+}
+
+void packetReceived() {
+  _atomic_start();
+  wakeup = TRUE;
+  wakeupThread( currentThread );
+  _atomic_end();
+}
+			\end{lstlisting}
+	\end{columns}
+\end{frame}
+
