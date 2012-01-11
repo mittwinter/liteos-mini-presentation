@@ -18,5 +18,6 @@
 	\textbf{Assumptions on\dots}
 	\begin{itemize}
 		\item	\emph{topology}: wireless sensor nodes with (powerful) computer as ``base station''
+		\item	\emph{environment}: trusted, no authentication implemented
 	\end{itemize}
 \end{frame}
