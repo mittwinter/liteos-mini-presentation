@@ -1,0 +1,22 @@
+\section{Design goals}
+
+\begin{frame}{Design goals of LiteOS}
+	\begin{itemize}
+		\item	Provide Unix-like abstraction from wireless sensor nodes
+				\begin{itemize}
+					\item	Shell
+					\item	Hierarchical filesystem
+					\item	\textbf{Programming:} Threads, C
+				\end{itemize}
+		\item	Small resource requirements
+				\begin{itemize}
+					\item	Designed for MicaZ nodes
+					\item	8\,MHz CPU, 128\,KB program flash, 4\,KB RAM
+				\end{itemize}
+	\end{itemize}
+	\vspace{1em}
+	\textbf{Assumptions on\dots}
+	\begin{itemize}
+		\item	\emph{topology}: wireless sensor nodes with (powerful) computer as ``base station''
+	\end{itemize}
+\end{frame}

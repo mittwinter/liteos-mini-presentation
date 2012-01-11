@@ -1,0 +1,69 @@
+% Presentation on LiteOS
+% by Martin Wegner
+% (based on TU-BS corporate identity beamer theme by Jens Brandt;
+%    http://www.ibr.cs.tu-bs.de/kb/slidetemplates.html)
+% Copyright (C) 2012 Martin Wegner
+% Released under the terms of the Creative Commons 3.0 Attribution license.
+% See http://creativecommons.org/licenses/by/3.0/ for more information.
+\documentclass[utf8,compress,hyperref={bookmarksopen=false}]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{relsize}
+
+\lstset{breaklines=true,breakatwhitespace=true,inputencoding=utf8,extendedchars=true,showspaces=false,showstringspaces=false,showtabs=false,tabsize=2}
+
+% TU-BS theme:
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\useoutertheme[relax,section]{tubs}
+\setbeamertemplate{itemize items}[tusquare]
+
+\title{LiteOS}
+\author[Martin Wegner]{Martin Wegner}
+\institute[TU Braunschweig, IBR]{Technische Universität Braunschweig, IBR}
+\date{\today}
+
+\instlogo{./image/ibr-logo}
+\titlegraphic{./image/micaz-mica2-cut} % Title graphic retrieved from http://dmod.cs.uoi.gr/DandyPage/phase3.htm
+
+\begin{document}
+
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+
+	\section*{}
+
+	%\setbeamercolor{frametitle}{fg=white,bg=tu-red}
+	\begin{frame}
+		\frametitle{Outline}
+		\tableofcontents[hidesubsections]
+	\end{frame}
+	%\setbeamercolor{frametitle}{fg=black,bg=tu-grey}
+
+	\input{./01-Design_goals.latex}
+
+	\section*{}
+
+	\begin{frame}{Summary}
+		\begin{center}
+			\textbf{Thank you for your attention.} \\
+			\vspace{1em}
+			Martin Wegner, \texttt{m.wegner@tu-bs.de}
+		\end{center}
+	\end{frame}
+
+	\section*{}
+
+	\begin{frame}[plain,allowframebreaks]{Literatur}
+		\nocite{liteos08}
+		\bibliographystyle{alphadin}
+		\bibliography{./Literatur}
+	\end{frame}
+
+	%\input{./99-Backup.latex}
+
+\end{document}
+
