@@ -20,10 +20,10 @@
 \useoutertheme[relax,section]{tubs}
 \setbeamertemplate{itemize items}[tusquare]
 
-\title{LiteOS}
+\title{Recent Topics in Computer Networking: LiteOS}
 \author[Martin Wegner]{Martin Wegner}
 \institute[TU Braunschweig, IBR]{Technische Universität Braunschweig, IBR}
-\date{\today}
+\date{January 12th, 2012}
 
 \instlogo{./image/ibr-logo}
 \titlegraphic{./image/micaz-mica2-cut} % Title graphic retrieved from http://dmod.cs.uoi.gr/DandyPage/phase3.htm
