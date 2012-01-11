@@ -48,6 +48,13 @@
 	\section*{}
 
 	\begin{frame}{Summary}
+		\begin{itemize}
+			\item	Unix-like environment with shell, hierarchical ``network filesystem'', C programming
+			\item	Multithreaded, event handling via threads or callbacks
+			\item	Small hardware requirements on nodes
+			\item	Dynamic (un)loading of applications
+			\item	Shell integrated debugging
+		\end{itemize}
 		\begin{center}
 			\textbf{Thank you for your attention.} \\
 			\vspace{1em}
