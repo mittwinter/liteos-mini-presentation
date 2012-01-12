@@ -69,7 +69,7 @@
 					\item	{internal events}: e.\,g. sending of packet succeeded $ \Rightarrow $ threads
 					\item	{external events}: e.\,g. packet received $ \Rightarrow $ callbacks
 				\end{itemize}
-		\item	Dynamic memory allocation (\texttt{malloc()}, \texttt{free()}
+		\item	Dynamic memory allocation (\texttt{malloc()}, \texttt{free()})
 	\end{itemize}
 \end{frame}
 
